@@ -33,4 +33,8 @@ public class Order {
 	@OneToMany(mappedBy = "order")
 	@OrderBy("id ASC")
 	private Set<OrderItem> orderItems = new LinkedHashSet<>(); // 訂單明細s
+	
+	@ManyToOne
+	@JoinColumn(name = "employee_id")
+	private Employee employee; // 員工
 }
