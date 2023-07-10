@@ -25,6 +25,6 @@ public class Department {
 	
 	@OneToMany(mappedBy ="department" )
 	@OrderBy("id ASC")
-	private Set<Employee> employees = new LinkedHashSet<>();
+	private Set<Employee> employees = new LinkedHashSet<>(); // 員工s
 	
 }
