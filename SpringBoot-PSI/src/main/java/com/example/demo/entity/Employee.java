@@ -26,11 +26,13 @@ public class Employee {
 	
 	@ManyToOne
 	@JoinColumn(name = "department_id")
-	private Department department;
+	private Department department; // 部門
 	
 	@OneToMany(mappedBy = "employee")
 	@OrderBy("id ASC")
-	private Set<Purchase> purchases = new LinkedHashSet<>();
+	private Set<Purchase> purchases = new LinkedHashSet<>(); // 採購單s
 	
-	
+	@OneToMany(mappedBy = "employee")
+	@OrderBy("id ASC")
+	private Set<Order> orders = new LinkedHashSet<>(); // 訂單s
 }
