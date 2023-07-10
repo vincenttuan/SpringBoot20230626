@@ -30,4 +30,8 @@ public class Purchase {
 	@ManyToOne
 	@JoinColumn(name = "supplier_id")
 	private Supplier supplier;
+	
+	@ManyToOne
+	@JoinColumn(name = "employee_id")
+	private Employee employee;
 }
