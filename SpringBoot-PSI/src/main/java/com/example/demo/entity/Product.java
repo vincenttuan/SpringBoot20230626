@@ -31,5 +31,11 @@ public class Product {
 	
 	@OneToMany(mappedBy = "product")
 	@OrderBy("id ASC")
-	private Set<PurchaseItem> purchaseItems = new LinkedHashSet<>(); // 採購單明細
+	private Set<PurchaseItem> purchaseItems = new LinkedHashSet<>(); // 採購單明細s
+	
+	@OneToMany(mappedBy = "product")
+	@OrderBy("id ASC")
+	private Set<OrderItem> orderItems = new LinkedHashSet<>(); // 訂單明細s
+	
+	
 }
