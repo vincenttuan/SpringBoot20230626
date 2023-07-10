@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,4 +21,8 @@ public class Order {
 	
 	@Column
 	private Date data; // 訂單日期
+	
+	@ManyToOne
+	@JoinColumn(name = "customer_id")
+	private Customer customer; // 客戶
 }
