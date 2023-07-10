@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,4 +18,11 @@ public class PurchaseItem {
 	
 	@Column
 	private Integer amount; // 採購數量
+	
+	@ManyToOne
+	@JoinColumn(name = "purchase_id")
+	private Purchase purchase; // 採購單
+	
+	
+	
 }
