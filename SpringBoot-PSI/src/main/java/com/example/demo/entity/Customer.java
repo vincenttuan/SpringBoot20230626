@@ -25,6 +25,6 @@ public class Customer {
 	
 	@OneToMany(mappedBy = "customer")
 	@OrderBy("id ASC")
-	private Set<Order> orders = new LinkedHashSet<>(); // 訂單
+	private Set<Order> orders = new LinkedHashSet<>(); // 訂單s
 	
 }
