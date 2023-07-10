@@ -12,8 +12,8 @@ import javax.persistence.Table;
 public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long id; // 員工序號
 	
 	@Column
-	private String name;
+	private String name; // 員工姓名
 }
