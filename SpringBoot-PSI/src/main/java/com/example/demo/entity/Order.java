@@ -37,4 +37,46 @@ public class Order {
 	@ManyToOne
 	@JoinColumn(name = "employee_id")
 	private Employee employee; // 員工
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public Set<OrderItem> getOrderItems() {
+		return orderItems;
+	}
+
+	public void setOrderItems(Set<OrderItem> orderItems) {
+		this.orderItems = orderItems;
+	}
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+	
+	
 }

@@ -26,5 +26,30 @@ public class Supplier {
 	@OneToMany(mappedBy = "supplier")
 	@OrderBy("id ASC")
 	private Set<Purchase> purchases = new LinkedHashSet<>();
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Set<Purchase> getPurchases() {
+		return purchases;
+	}
+
+	public void setPurchases(Set<Purchase> purchases) {
+		this.purchases = purchases;
+	}
+	
 	
 }

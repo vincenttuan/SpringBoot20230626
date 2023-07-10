@@ -26,5 +26,38 @@ public class PurchaseItem {
 	@ManyToOne
 	@JoinColumn(name = "purchase_id")
 	private Product product; // 商品 
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Integer getAmount() {
+		return amount;
+	}
+
+	public void setAmount(Integer amount) {
+		this.amount = amount;
+	}
+
+	public Purchase getPurchase() {
+		return purchase;
+	}
+
+	public void setPurchase(Purchase purchase) {
+		this.purchase = purchase;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+	
 	
 }

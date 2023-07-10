@@ -42,4 +42,46 @@ public class Purchase {
 	@OneToMany(mappedBy = "purchase")
 	@OrderBy("id ASC")
 	private Set<PurchaseItem> purchaseItems = new LinkedHashSet<>(); // 採購單明細
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public Supplier getSupplier() {
+		return supplier;
+	}
+
+	public void setSupplier(Supplier supplier) {
+		this.supplier = supplier;
+	}
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+
+	public Set<PurchaseItem> getPurchaseItems() {
+		return purchaseItems;
+	}
+
+	public void setPurchaseItems(Set<PurchaseItem> purchaseItems) {
+		this.purchaseItems = purchaseItems;
+	}
+	
+	
 }
