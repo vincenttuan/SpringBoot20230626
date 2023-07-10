@@ -45,6 +45,17 @@ public class CreateCustomer {
 		Customer c10 = new Customer();
 		c10.setName("鄭十");
 		
+		// 儲存
+		customerRepository.save(c1);
+		customerRepository.save(c2);
+		customerRepository.save(c3);
+		customerRepository.save(c4);
+		customerRepository.save(c5);
+		customerRepository.save(c6);
+		customerRepository.save(c7);
+		customerRepository.save(c8);
+		customerRepository.save(c9);
+		customerRepository.save(c10);
 		
 		System.out.println("OK");
 	}
