@@ -23,6 +23,8 @@ public class PurchaseItem {
 	@JoinColumn(name = "purchase_id")
 	private Purchase purchase; // 採購單
 	
-	
+	@ManyToOne
+	@JoinColumn(name = "purchase_id")
+	private Product product; // 商品 
 	
 }
