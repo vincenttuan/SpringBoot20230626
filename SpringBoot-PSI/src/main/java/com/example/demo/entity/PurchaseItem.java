@@ -24,7 +24,7 @@ public class PurchaseItem {
 	private Purchase purchase; // 採購單
 	
 	@ManyToOne
-	@JoinColumn(name = "purchase_id")
+	@JoinColumn(name = "product_id")
 	private Product product; // 商品 
 
 	public Long getId() {
