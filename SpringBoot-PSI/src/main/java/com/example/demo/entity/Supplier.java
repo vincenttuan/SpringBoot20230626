@@ -23,7 +23,7 @@ public class Supplier {
 	@Column
 	private String name; // 供應商名稱
 	
-	@OneToMany
+	@OneToMany(mappedBy = "supplier")
 	@OrderBy("id ASC")
 	private Set<Purchase> purchases = new LinkedHashSet<>();
 	
