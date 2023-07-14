@@ -35,6 +35,14 @@ public class Employee {
 	@OneToMany(mappedBy = "employee")
 	@OrderBy("id ASC")
 	private Set<Order> orders = new LinkedHashSet<>(); // 訂單s
+	
+	public Employee() {
+		
+	}
+	
+	public Employee(String name) {
+		this.name = name;
+	}
 
 	public Long getId() {
 		return id;
