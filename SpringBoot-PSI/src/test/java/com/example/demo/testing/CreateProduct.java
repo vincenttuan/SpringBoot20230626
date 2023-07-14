@@ -14,6 +14,18 @@ public class CreateProduct {
 	
 	@Test
 	public void test() {
-		Product
+		Product p1 = new Product("百合花", 10, 10*4);
+		Product p2 = new Product("鬱金香", 15, 15*4);
+		Product p3 = new Product("玫瑰",  25, 25*4);
+		Product p4 = new Product("向日葵", 35, 35*4);
+		
+		// 儲存
+		productRepository.save(p1);
+		productRepository.save(p2);
+		productRepository.save(p3);
+		productRepository.save(p4);
+		
+		System.out.println("OK");
+		
 	}
 }
