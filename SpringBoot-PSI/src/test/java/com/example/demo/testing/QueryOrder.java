@@ -29,11 +29,11 @@ public class QueryOrder {
 					  .mapToInt(item -> item.getAmount() * item.getProduct().getPrice())
 					  .sum();
 			
-			System.out.printf("訂單ID: %d 客戶: %s 員工: %s 總價: %d\n", 
+			System.out.printf("訂單ID: %d 客戶: %s 員工: %s 總價: %,d\n", 
 					order.getId(), order.getCustomer().getName(), order.getEmployee().getName(), total);
 			System.out.println("訂單明細:");
 			order.getOrderItems().forEach(item -> {
-				System.out.printf("明細ID: %d 商品名稱: %s 數量: %d 單價: %d 小計: %d\n",
+				System.out.printf("明細ID: %d 商品名稱: %s 數量: %d 單價: %,d 小計: %d\n",
 						item.getId(), item.getProduct().getName(), item.getAmount(),
 						item.getProduct().getPrice(),
 						(item.getProduct().getPrice() * item.getAmount()));
@@ -48,7 +48,7 @@ public class QueryOrder {
 										  .mapToInt(item -> item.getAmount() * item.getProduct().getPrice())
 										  .sum())
 				  .sum(); 
-		System.out.printf("所有訂單的總價: %d\n", sumTotal);
+		System.out.printf("所有訂單的總價: %,d\n", sumTotal);
 		
 	}
 }
