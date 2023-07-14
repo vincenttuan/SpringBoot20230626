@@ -64,7 +64,12 @@ public class CreateOrder {
 		item2.setOrder(order); // 配置訂購單
 		item2.setProduct(p2);  // 配置商品 p2
 				
+		// 保存
+		orderRepository.save(order);
+		orderItemRepository.save(item1);
+		orderItemRepository.save(item2);
 		
+		System.out.println("OK");
 	}
 	
 }
