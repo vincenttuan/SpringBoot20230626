@@ -33,6 +33,7 @@
 						<th>部門名稱</th>
 						<th>員工</th>
 						<th>修改</th>
+						<th>刪除</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -48,6 +49,12 @@
 							<a th:href="@{/department/edit/{id}(id=${dept.id})}" 
 							   class="btn btn-primary">
 								編輯
+							</a>
+						</td>
+						<td>
+							<a th:href="@{/department/delete/{id}(id=${dept.id})}" 
+							   class="btn btn-danger">
+								刪除
 							</a>
 						</td>
 					</tr>
