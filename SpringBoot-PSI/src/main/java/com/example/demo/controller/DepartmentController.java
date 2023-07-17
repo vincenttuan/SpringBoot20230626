@@ -45,4 +45,11 @@ public class DepartmentController {
 		departmentRepository.save(department);
 		return "redirect:/department/";
 	}
+	
+	@GetMapping("/delete/{id}")
+	public String delete(@PathVariable("id") Long id) {
+		departmentRepository.deleteById(id);
+		return "redirect:/department/";
+	}
+	
 }
