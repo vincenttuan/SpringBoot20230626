@@ -52,10 +52,18 @@
 							</a>
 						</td>
 						<td>
-							<a th:href="@{/department/delete/{id}(id=${dept.id})}" 
+							<a th:href="@{/department/delete/{id}(id=${dept.id})}"
+							   th:if="${dept.employees.size == 0}"		 
 							   class="btn btn-danger">
 								刪除
 							</a>
+							
+							<a 
+							   th:unless="${dept.employees.size == 0}"		 
+							   class="btn btn-secondary">
+								刪除
+							</a>
+							
 						</td>
 					</tr>
 				</tbody>
