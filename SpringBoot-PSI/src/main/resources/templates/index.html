@@ -9,13 +9,14 @@
 	<body>
 		<div class="container my-2">
 			<!-- Header -->
-			
+			<div th:include="header :: header"></div>
 			
 			<!-- Content -->
-			
+			<h1>PSI 資料表關聯圖</h1>
+			<img class="img-fluid" th:src="@{/images/psi_tables.png}" />
 			
 			<!-- Footer -->
-			
+			<div th:include="footer :: footer"></div>
 		</div>
 	</body>
 </html>
