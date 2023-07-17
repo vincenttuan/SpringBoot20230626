@@ -32,6 +32,7 @@
 						<th>序號</th>
 						<th>部門名稱</th>
 						<th>員工</th>
+						<th>修改</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -42,6 +43,12 @@
 							<span th:each="emp : ${dept.employees}">
 								<span th:text="${emp.name}" class="btn btn-success"></span>
 							</span>
+						</td>
+						<td>
+							<a th:href="@{/department/edit/{id}(id=dept.id)}" 
+							   class="btn btn-primary">
+								編輯
+							</a>
 						</td>
 					</tr>
 				</tbody>
