@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -22,6 +23,13 @@ public class DepartmentController {
 	public String index(@ModelAttribute Department department, Model model) {
 		model.addAttribute("departments", departmentRepository.findAll());
 		return "department";
+	}
+	
+	@GetMapping("/edit/{id}")  // 顯示修改頁面
+	public String edit(@PathVariable("id") Long id, Model model) {
+		Department department = departmentRepository.findById(id).get();
+		model.addAttribute("department", department);
+		return "department-edit";
 	}
 	
 	@PostMapping(value = {"/", "/create"})
