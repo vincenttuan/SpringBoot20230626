@@ -31,12 +31,18 @@
 					<tr>
 						<th>序號</th>
 						<th>部門名稱</th>
+						<th>員工</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:each="dept : ${departments}">
 						<td th:text="${dept.id}"></td>
 						<td th:text="${dept.name}"></td>
+						<td>
+							<span th:each="emp : ${dept.employees}">
+								<span th:text="${emp.name}" class="btn btn-success"></span>
+							</span>
+						</td>
 					</tr>
 				</tbody>
 			</table>
