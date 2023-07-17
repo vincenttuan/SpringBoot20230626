@@ -24,7 +24,7 @@ public class DepartmentController {
 		return "department";
 	}
 	
-	@PostMapping("/")
+	@PostMapping(value = {"/", "/create"})
 	public String create(Department department) {
 		departmentRepository.save(department);
 		return "redirect:/department/";
