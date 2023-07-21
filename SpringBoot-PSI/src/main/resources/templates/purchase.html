@@ -47,36 +47,43 @@
 				<thead>
 					<tr>
 						<th>序號</th>
-						<th>部門名稱</th>
+						<th>日期</th>
+						<th>供應商</th>
 						<th>員工</th>
+						<th>總價</th>
 						<th>修改</th>
+						<th>檢視明細</th>
 						<th>刪除</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="dept : ${departments}">
-						<td th:text="${dept.id}"></td>
-						<td th:text="${dept.name}"></td>
+					<tr th:each="purchase : ${purchases}">
+						<td th:text="${purchase.id}"></td>
+						<td th:text="${purchase.date}"></td>
+						<td th:text="${purchase.supplier.name}"></td>
+						<td th:text="${purchase.employee.name}"></td>
+						<td></td>
 						<td>
-							<span th:each="emp : ${dept.employees}">
-								<span th:text="${emp.name}" class="btn btn-success"></span>
-							</span>
-						</td>
-						<td>
-							<a th:href="@{/department/edit/{id}(id=${dept.id})}" 
+							<a th:href="@{/purchase/edit/{id}(id=${purchase.id})}" 
 							   class="btn btn-primary">
 								編輯
 							</a>
 						</td>
 						<td>
-							<a th:href="@{/department/delete/{id}(id=${dept.id})}"
-							   th:if="${dept.employees.size == 0}"		 
+							<a th:href="@{/purchase/{id}/item(id=${purchase.id})}" 
+							   class="btn btn-primary">
+								檢視
+							</a>
+						</td>
+						<td>
+							<a th:href="@{/purchase/delete/{id}(id=${purchase.id})}"
+							   th:if="${purchase.purchaseItems.size == 0}"		 
 							   class="btn btn-danger">
 								刪除
 							</a>
 							
 							<a 
-							   th:unless="${dept.employees.size == 0}"		 
+							   th:unless="${purchase.purchaseItems.size == 0}"		 
 							   class="btn btn-secondary">
 								刪除
 							</a>
