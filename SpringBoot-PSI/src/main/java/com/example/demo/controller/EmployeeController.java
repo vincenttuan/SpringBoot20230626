@@ -37,8 +37,8 @@ public class EmployeeController {
 		return "redirect:/employee/";
 	}
 	
-	@GetMapping("/get/{id}")  // 取得單筆資料為要呈現修改頁面 
-	public String get(@PathVariable("id") Long id, Model model) {
+	@GetMapping("/edit/{id}")  // 取得單筆資料為要呈現修改頁面 
+	public String edit(@PathVariable("id") Long id, Model model) {
 		Employee employee = employeeRepository.findById(id).get();
 		model.addAttribute("employee", employee);
 		model.addAttribute("departments", departmentRepository.findAll());
