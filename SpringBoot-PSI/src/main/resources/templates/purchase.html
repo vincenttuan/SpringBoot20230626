@@ -17,7 +17,7 @@
 				<div class="form-group">
 					<label>採購日期:</label>
 					<input type="date" 
-						   th:field="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}" 
+						   th:value="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}" 
 						   id="date" 
 						   name="date"
 						   class="form-control"
