@@ -38,7 +38,7 @@ public class PurchaseController {
 	// 採購單主檔 CRUD --------------------------------------------------------
 	@GetMapping("/")
 	public String index(@ModelAttribute Purchase purchase, Model model) {
-		model.addAttribute("purchases", purchaseItemRepository.findAll());
+		model.addAttribute("purchases", purchaseRepository.findAll());
 		model.addAttribute("suppliers", supplierRepository.findAll());
 		model.addAttribute("employees", employeeRepository.findAll());
 		return "purchase";
