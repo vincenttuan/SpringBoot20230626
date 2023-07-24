@@ -14,6 +14,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 //因為 MySQL 不可以建立 Order 資料表 (因 Order 在 MySQL 中是保留字)
@@ -24,6 +28,8 @@ public class Order {
 	private Long id; // 訂單序號
 	
 	@Column
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date data; // 訂單日期
 	
 	@ManyToOne
