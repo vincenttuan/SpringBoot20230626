@@ -47,7 +47,7 @@ public class CreateOrder2 {
 		
 		// 建立訂單
 		Order order = new Order();
-		order.setData(new Date()); // 建立訂單日期
+		order.setDate(new Date()); // 建立訂單日期
 		// 配置關聯
 		order.setEmployee(emp); // 配置員工: Bob
 		order.setCustomer(customer); // 配置客戶: 陳二
