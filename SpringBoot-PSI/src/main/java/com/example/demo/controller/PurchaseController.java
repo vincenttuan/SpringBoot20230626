@@ -104,6 +104,21 @@ public class PurchaseController {
 		return "redirect:/purchase/" + pid + "/item";
 	}
 	
+	// 取得訂單明細 /edit/4/item/7, 4:訂單id, 7:項目id
+	@GetMapping("/edit/{pid}/item/{iid}")
+	public String getItem(@PathVariable("pid") Long pid, 
+						  @PathVariable("iid") Long iid,
+						  Model model) {
+		Purchase purchase = purchaseRepository.findById(pid).get();
+		PurchaseItem purchaseItem = purchaseItemRepository.findById(iid).get();
+		List<Product> products = productRepository.findAll();
+		
+		model.addAttribute("purchase", purchase);
+		model.addAttribute("purchaseItem", purchaseItem);
+		model.addAttribute("products", products);
+		
+		return "purchase-item";
+	}	
 	
 }
 

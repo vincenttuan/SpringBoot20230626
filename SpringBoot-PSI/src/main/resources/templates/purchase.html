@@ -62,7 +62,7 @@
 						<td th:text="${purchase.date}"></td>
 						<td th:text="${purchase.supplier.name}"></td>
 						<td th:text="${purchase.employee.name}"></td>
-						<td></td>
+						<td th:text="${purchase.total}"></td>
 						<td>
 							<a th:href="@{/purchase/edit/{id}(id=${purchase.id})}" 
 							   class="btn btn-primary">
