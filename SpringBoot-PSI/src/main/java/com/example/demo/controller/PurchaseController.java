@@ -84,12 +84,9 @@ public class PurchaseController {
 							Model model) {
 		// 透過 pid 先找到該筆訂單
 		Purchase purchase = purchaseRepository.findById(pid).get();
-		// 取得訂單明細
-		Set<PurchaseItem> purchaseItems = purchase.getPurchaseItems();
 		// 取得所有商品
 		List<Product> products = productRepository.findAll();
 		model.addAttribute("purchase", purchase);
-		model.addAttribute("purchaseItems", purchaseItems);
 		model.addAttribute("products", products);
 		
 		return "purchase-item";
