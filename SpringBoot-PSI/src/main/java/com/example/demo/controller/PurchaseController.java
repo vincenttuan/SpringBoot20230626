@@ -82,7 +82,7 @@ public class PurchaseController {
 	public String indexItem(@PathVariable("pid") Long pid, 
 							@ModelAttribute PurchaseItem purchaseItem, 
 							Model model) {
-		// 透過 pid 先找到該筆訂單
+		// 透過 pid 先找到該筆採購單
 		Purchase purchase = purchaseRepository.findById(pid).get();
 		// 取得所有商品
 		List<Product> products = productRepository.findAll();
@@ -92,10 +92,10 @@ public class PurchaseController {
 		return "purchase-item";
 	}
 	
-	// 新增訂單明細
+	// 新增採購單明細
 	@PostMapping("/{pid}/item")
 	public String createItem(PurchaseItem purchaseItem, @PathVariable("pid") Long pid) {
-		// 取得訂單檔
+		// 取得採購單檔
 		Purchase purchase = purchaseRepository.findById(pid).get();
 		// 配置關聯(由多的一方建立關聯)
 		purchaseItem.setPurchase(purchase);
@@ -104,7 +104,7 @@ public class PurchaseController {
 		return "redirect:/purchase/" + pid + "/item";
 	}
 	
-	// 取得訂單明細 /edit/4/item/7, 4:訂單id, 7:項目id
+	// 取得採購單明細 /edit/4/item/7, 4:訂單id, 7:項目id
 	@GetMapping("/edit/{pid}/item/{iid}")
 	public String getItem(@PathVariable("pid") Long pid, 
 						  @PathVariable("iid") Long iid,
@@ -118,8 +118,27 @@ public class PurchaseController {
 		model.addAttribute("products", products);
 		
 		return "purchase-item";
-	}	
+	}
 	
+	// 修改採購單項目
+	@PutMapping("/{pid}/item")
+	public String updateItem(PurchaseItem purchaseItem, @PathVariable("pid") Long pid) {
+		// 取得採購單檔
+		Purchase purchase = purchaseRepository.findById(pid).get();
+		// 配置關聯(由多的一方建立關聯)
+		purchaseItem.setPurchase(purchase);
+		// 存檔
+		purchaseItemRepository.save(purchaseItem);
+		
+		return "redirect:/purchase/" + pid + "/item";
+	}
+	
+	// 刪除採購單項目
+	@GetMapping("/delete/{pid}/item/{iid}")
+	public String deleteItem(@PathVariable("pid") Long pid, @PathVariable("iid") Long iid){
+		purchaseItemRepository.deleteById(iid);
+		return "redirect:/purchase/" + pid + "/item";
+	}
 }
 
 
