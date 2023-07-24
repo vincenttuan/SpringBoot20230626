@@ -78,5 +78,13 @@ public class Order {
 		this.employee = employee;
 	}
 	
-	
+	// 計算訂單總價
+	public Integer getTotal() {
+		if(orderItems.size() == 0) {
+			return 0;
+		}
+		return orderItems.stream()
+				.mapToInt(item -> item.getAmount() * item.getProduct().getPrice())
+				.sum();
+	}
 }
