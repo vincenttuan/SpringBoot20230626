@@ -20,29 +20,28 @@ import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-//因為 MySQL 不可以建立 Order 資料表 (因 Order 在 MySQL 中是保留字)
-@Table(name = "orders")
+@Table(name = "orders") // 因為 MySQL 不可以建立 Order 資料表 (因 Order 在 MySQL 中是保留字)
 public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id; // 訂單序號
+	private Long id;
 	
 	@Column
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date data; // 訂單日期
+	private Date date; // 訂單日期
 	
+	@JoinColumn(name = "customer_id")  // 客戶編號(外鍵)
 	@ManyToOne
-	@JoinColumn(name = "customer_id")
-	private Customer customer; // 客戶
+	private Customer customer;
+	
+	@JoinColumn(name = "employee_id")  // 員工編號(外鍵)
+	@ManyToOne
+	private Employee employee;
 	
 	@OneToMany(mappedBy = "order")
 	@OrderBy("id ASC")
-	private Set<OrderItem> orderItems = new LinkedHashSet<>(); // 訂單明細s
-	
-	@ManyToOne
-	@JoinColumn(name = "employee_id")
-	private Employee employee; // 員工
+	private Set<OrderItem> orderItems = new LinkedHashSet<>();
 
 	public Long getId() {
 		return id;
@@ -52,12 +51,12 @@ public class Order {
 		this.id = id;
 	}
 
-	public Date getData() {
-		return data;
+	public Date getDate() {
+		return date;
 	}
 
-	public void setData(Date data) {
-		this.data = data;
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	public Customer getCustomer() {
@@ -68,20 +67,20 @@ public class Order {
 		this.customer = customer;
 	}
 
-	public Set<OrderItem> getOrderItems() {
-		return orderItems;
-	}
-
-	public void setOrderItems(Set<OrderItem> orderItems) {
-		this.orderItems = orderItems;
-	}
-
 	public Employee getEmployee() {
 		return employee;
 	}
 
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
+	}
+
+	public Set<OrderItem> getOrderItems() {
+		return orderItems;
+	}
+
+	public void setOrderItems(Set<OrderItem> orderItems) {
+		this.orderItems = orderItems;
 	}
 	
 	// 計算訂單總價
@@ -93,4 +92,5 @@ public class Order {
 				.mapToInt(item -> item.getAmount() * item.getProduct().getPrice())
 				.sum();
 	}
+	
 }
