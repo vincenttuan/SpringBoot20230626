@@ -92,6 +92,18 @@ public class PurchaseController {
 		return "purchase-item";
 	}
 	
+	// 新增訂單明細
+	@PostMapping("/{pid}/item")
+	public String createItem(PurchaseItem purchaseItem, @PathVariable("pid") Long pid) {
+		// 取得訂單檔
+		Purchase purchase = purchaseRepository.findById(pid).get();
+		// 配置關聯(由多的一方建立關聯)
+		purchaseItem.setPurchase(purchase);
+		// 存檔
+		purchaseItemRepository.save(purchaseItem);
+		return "redirect:/purchase/" + pid + "/item";
+	}
+	
 	
 }
 
