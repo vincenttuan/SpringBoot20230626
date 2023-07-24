@@ -1,5 +1,8 @@
 package com.example.demo.controller;
 
+import java.util.List;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.demo.entity.Product;
 import com.example.demo.entity.Purchase;
+import com.example.demo.entity.PurchaseItem;
 import com.example.demo.repository.EmployeeRepository;
 import com.example.demo.repository.ProductRepository;
 import com.example.demo.repository.PurchaseItemRepository;
@@ -73,6 +78,23 @@ public class PurchaseController {
 	}
 	
 	// 採購單明細檔 CRUD --------------------------------------------------------
+	@GetMapping("/{pid}/item")
+	public String indexItem(@PathVariable("pid") Long pid, 
+							@ModelAttribute PurchaseItem purchaseItem, 
+							Model model) {
+		// 透過 pid 先找到該筆訂單
+		Purchase purchase = purchaseRepository.findById(pid).get();
+		// 取得訂單明細
+		Set<PurchaseItem> purchaseItems = purchase.getPurchaseItems();
+		// 取得所有商品
+		List<Product> products = productRepository.findAll();
+		model.addAttribute("purchase", purchase);
+		model.addAttribute("purchaseItems", purchaseItems);
+		model.addAttribute("products", products);
+		
+		return "purchase-item";
+	}
+	
 	
 }
 
